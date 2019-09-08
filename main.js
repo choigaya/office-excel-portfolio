@@ -1,61 +1,13 @@
-const express = require('express');
-const path = require('path');
-const app = express();
+// 서버측 사이드 
 
-app.use(express.static(path.join(__dirname,'app/html')));
+const http = require('http');
+const app = require('./app');
 
+// 가져온 모듈을 웹서버로 연동
+const server = http.createServer(app); 
 
-app.get('/', function(req, res) { // 홈 부분페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'index.html'));
+// 헤로쿠 서비스를 사용해야되기 때문에 반드시 환경변수 로 포트를 불러온다.
+// 헤로쿠 가 없다면 8080번 포트로 접속한다.
+server.listen(process.env.PORT || 8080, function() {             
+     console.log("Server: Success!");
 });
-
-app.get('/skill', function(req, res) {// 스킬 부분 페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'skill.html'));
-});
-
-app.get('/portfolio', function(req, res) {// 포트폴리오 부분 페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'portfolio.html'));
-});
-
-app.get('/about', function(req, res) { // about 부분 페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'about.html'));
-});
-
-
-
-// ERROR Handling
-
-app.use(function(req, res, next) {
-    const error = new Error('Page Not Found');
-    error.status(404);
-    res.send('404 Page Not Found');
-    next(error);
-});
-
-app.use(function(req, res, next) {
-    const error = new Error('method Allowed');
-    error.status(405);
-    res.send('405 method Allowed');
-    next(error);
-});
-
-app.use(function(req, res, next) {
-    const error = new Error('Service Unavailable');
-    error.status(503);
-    res.send('503 Service Unavailable');
-    next(error);
-});
-
-app.use(function(req, res, next) {
-   const error = new Error('Unauthorized');
-   error.status(401);
-   res.send('401 Unauthorized');
-   next(error);
-});
-
-app.use(function(error, req, res, next) {
-   res.status(error.status || 500);    
-   res.send('500 Internal Server Error');
-});
-
-module.exports = app;
