@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pace-theme-flash.css">
+    <link href="https://fonts.googleapis.com/css?family=Hepta+Slab|Merriweather|Roboto|Gothic+A1|Noto+Sans+KR|Oswald|Oxygen|Raleway|Source+Sans+Pro&display=swap" rel="stylesheet">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="pace.js"></script>    
+    <script type="text/javascript" src="./js-xlsx/xlsx.full.min.js"></script>
+    <script type="text/javascript" src="./js-xlsx/FileSaver.min.js"></script>
+    <script type="text/javascript" src="./js-xlsx/xlsx.js"></script>
+    <script type="text/javascript" src="./js-xlsx/table.js"></script>
+    <title>Office Portfolio</title>
+</head>
+<body>
+   <div id="wrap">
+    <div id="header-wrap">
+        <div class="header-container">
+           <span>
+               <a class="js-header-menu" href='/'>Home</a>
+           </span>
+           <span>
+               <a class="js-header-menu" href="/skill">Skills</a>
+           </span>
+           <span>
+               <a class="js-header-menu" href="/portfolio">Portfolio</a>
+           </span>
+           <span>
+              <a class="js-header-menu" href="/about">About</a>
+           </span>
+        </div>
+    </div>
+    <div id="content-wrap">
+        <div class="content-container">
+           <div class="content-container-title">
+               <p>Portfolio</p>  
+           </div>
+           <p class="content-container-context">
+                엑셀에 관련된 포트폴리오 입니다.엑셀 파일 을 직접 생성 하지 않고,Javascript 와 Python 으로 제어 합니다.
+                아래 버튼 을 클릭하시면 사무 자동화 프로젝트 가 작동합니다.
+           </p>
+           <div class="content-container-block"> 
+               <article>
+                   <p class="content-block-title">Convert HTML to Excel</p>
+                   <div class="content-block-context">
+                      <p class="text">다음과 같은 HTML Table 을 참고 해주세요.<br>Table을 엑셀 로 그대로 옮기는 작업을 수행합니다.</p>
+                      <p class="text">최근 2019년 에 발생한 지진 활동지역 을 테이블로 표현해보았습니다.</p>
+                      <p class="text">버튼 을 클릭하시면 엑셀파일 이 다운로드 됩니다.</p>
+                   </div>
+                   <div class="content-block-context">
+                        <table id="earthquake-table">
+                           <tr>
+                              <th>번호</th>
+                              <th>발생시각</th>
+                              <th>규모</th>
+                              <th>깊이(km)</th>
+                              <th>위도</th>
+                              <th>경도</th>
+                              <th>위치</th>
+                           </tr>
+                           <tr>
+                              <td>60</td>
+                              <td>2019-09-01 12:58</td>
+                              <td>2.3</td>
+                              <td>16</td>
+                              <td>39.51 N</td>
+                              <td>126.10 E</td>
+                              <td>북한 평안남도 개천 남동쪽 27km 지역</td>
+                           </tr>
+                           <tr>
+                              <td>59</td>
+                              <td>2019-08-28 14:22</td>
+                              <td>2.5</td>
+                              <td>26</td>
+                              <td>36.24 N</td>
+                              <td>126.10 E</td>
+                              <td>경북 영덕군 동남동쪽 61km 해역</td>
+                            </tr>
+                            <tr>
+                               <td>58</td>
+                               <td>2019-08-23 19:50</td>
+                               <td>2.7</td>
+                               <td>7</td>
+                               <td>37.96 N</td>
+                               <td>126.10 E</td>
+                               <td>인천 옹진군 백령도 북동쪽 1km 지역</td>
+                            </tr>
+                            <tr>
+                               <td>57</td>
+                               <td>2019-08-20 10:34</td>
+                               <td>2.8</td>
+                               <td>22</td>
+                               <td>33.57 N</td>
+                               <td>126.10 E</td>
+                               <td>전남 신안군 흑산도 남남서쪽 135km 해역</td>
+                            </tr>
+                            <tr>
+                               <td>56</td>
+                               <td>2019-08-11 18:19</td>
+                               <td>2.1</td>
+                               <td>10</td>
+                               <td>37.97 N</td>
+                               <td>126.10 E</td>
+                               <td>인천 옹진군 백령도 서북서쪽 5km 지역</td>
+                            </tr>
+                            <tr>
+                               <td>55</td>
+                               <td>2019-08-10 22:45</td>
+                               <td>2.3</td>
+                               <td>18</td>
+                               <td>33.78 N</td>
+                               <td>126.10 E</td>
+                               <td>전남 여수시 거문도 남서쪽 45km 해역</td>
+                            </tr>  
+                        </table>
+                        <div class="copy-kma content-block-context"><a href="https://www.weather.go.kr/weather/earthquake_volcano/domesticlist.jsp" target="_blank">참고 자료: 2019기상청 지진정보</a></div>     
+                   </div>
+                   <div><a class="js-btn-1 btn">Convert HTML Table</a></div>
+               </article> 
+               <article>
+                   <p class="content-block-title">Create Excel File with Javascript</p>
+                   <div class="content-block-context">
+                      <p class="text">아래의 양식에 따라 작성 해주세요.</p>
+                      <p class="text">버튼 을 클릭하시면 작성하신 양식에 따라 엑셀 파일 에 적용되며 다운로드 할 수 있습니다.</p>
+                   </div>
+                   <div class="content-block-context">
+                        <span>제목:</span>
+                        <div>  
+                           <input type="text" id="title" name="title" required 
+                            minlength="1" maxlength="10" size="10">
+                        </div>
+                       
+                        <span>주제:</span>
+                        <div>
+                            <input type="text" id="subject" name="subject" required 
+                             minlength="1" maxlength="100" size="10">    
+                        </div>
+
+                        <span>사용자 이름:</span>
+                        <div>
+                            <input type="text" id="user" name="user" required 
+                             minlength="1" maxlength="100" size="10">
+                        </div>
+                        <span>내용:</span> 
+                        <div>
+                            <textarea id="context" name="context"
+                             rows="5" cols="33">
+                            </textarea> 
+                        </div>
+                        <div><a class="js-btn-2 btn">Create Excel</a></div>
+                   </div>
+               </article> 
+               <article>
+                   <p class="content-block-title">Excel with Python</p>
+                   <div class="content-block-context">
+                       <p class="text">엑셀을 Python 과 함께 응용합니다.</p>
+                       <p class="text">Pandas 프레임워크를 사용 하였습니다.</p>
+                       <p class="text">csv 를 python 으로 불러옵니다.</p>
+                       <p class="text">엑셀의 VLOOKUP 기능 을 python 으로 사용하여 데이터를 추출합니다.</p>
+                       <p class="text">아래 버튼을 클릭하시면 python 프로젝트 링크로 이동됩니다.</p>
+                   </div>
+                   <div class="content-block-context">
+                        <div class="copy-kma content-block-context"><a href="https://github.com/MuseumofModernArt/collection" target="_blank">참고 자료:Museum of ModernArt</a></div> 
+                   </div>
+                   <div><a class="js-btn-3 btn" href="https://drive.google.com/open?id=1V4u3Yp1iu56rZIO5LarZ4FCnWpbYVyem" target="_blank">Download Link</a></div> 
+                   <div class="content-last-block content-block-context">©️2019 Office Portfolio | woosung827@gmail.com</div>
+               </article>
+           </div>   
+        </div> 
+    </div>
+</div>
+</body>
+<script src="app.js"></script>
+</html>
