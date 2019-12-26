@@ -2,23 +2,23 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-app.use(express.static(path.join(__dirname,'app/html')));
+app.use(express.static(path.join(__dirname,'public/html')));
 
 
 app.get('/', function(req, res) { // 홈 부분페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public/html', 'index.html'));
 });
 
 app.get('/skill', function(req, res) {// 스킬 부분 페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'skill.html'));
+    res.sendFile(path.join(__dirname, 'public/html', 'skill.html'));
 });
 
 app.get('/portfolio', function(req, res) {// 포트폴리오 부분 페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'portfolio.html'));
+    res.sendFile(path.join(__dirname, 'public/html', 'portfolio.html'));
 });
 
 app.get('/about', function(req, res) { // about 부분 페이지
-    res.sendFile(path.join(__dirname, 'app/html', 'about.html'));
+    res.sendFile(path.join(__dirname, 'public/html', 'about.html'));
 });
 
 
